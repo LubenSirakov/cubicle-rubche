@@ -1,0 +1,21 @@
+{
+  "name": "cubicle-rubche",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LubenSirakov/cubicle-rubche.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LubenSirakov/cubicle-rubche/issues"
+  },
+  "homepage": "https://github.com/LubenSirakov/cubicle-rubche#readme"
+}
