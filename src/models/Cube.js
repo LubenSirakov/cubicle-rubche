@@ -25,7 +25,7 @@ class Cube {
         this.difficulty = difficulty;
     }
 
-    static getAll() {
+    static get cubes() {
         return Cube.#cubes.slice();
     }
 
