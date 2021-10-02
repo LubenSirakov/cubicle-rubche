@@ -13,7 +13,7 @@ const create = (name, description, imageUrl, difficulty) => {
 const cubeService = {
     create,
     getAll,
-    getOne
+    getOne 
 };
 
 module.exports = cubeService;
