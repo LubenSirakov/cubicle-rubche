@@ -10,4 +10,8 @@ router.get('/add', async (req, res) => {
     res.render('cube/accessory/add', { cube, accessories })
 })
 
+router.post('/add', async (req, res) => {
+    await cubeService.attachAccessory(req.params.cubeId, req.body.accessory)
+})
+
 module.exports = router;

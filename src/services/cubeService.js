@@ -33,11 +33,16 @@ const search = async (text, from, to) => {
     return result;
 };
 
+const attachAccessory = (cubeId, accessoryId) => {
+
+}
+
 const cubeService = {
     create,
     getAll,
     getOne,
-    search
+    search,
+    attachAccessory
 };
 
 module.exports = cubeService;
