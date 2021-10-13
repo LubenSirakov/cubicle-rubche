@@ -10,13 +10,14 @@ exports.register = function (username, password, repeatPassword) {
 
 exports.login = function (username, password) {
     return User.findByUsername(username)
-        .then(user => Promise.all([bcrypt.compare(password, user.password), user]))
+        .then(user => Promise.all([user.validatePassword(password), user]))
         .then(([isValid, user]) => {
-            console.log(values);
+            
             if (isValid) {
                 return user;
             } else {
                 throw { message: 'Cannot find username or password!' }
             }
         })
+        .catch(() => null);
 };
