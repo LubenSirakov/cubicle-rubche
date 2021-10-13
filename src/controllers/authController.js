@@ -31,10 +31,12 @@ router.post('/login', async (req, res) => {
         return res.redirect('/404');
     }
     let token = await authService.createToken(user);
-    console.log(token);
+    
+    res.cookie('app_token', token, {
+        httpOnly: true
+    })
+
     res.redirect('/');
-
-
 });
 
 module.exports = router;

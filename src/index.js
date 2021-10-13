@@ -3,12 +3,13 @@ const path = require('path');
 const routes = require('./routes.js');
 const config = require('./config/config.json')[process.env.NODE_ENV || 'development'];
 const initDatabase = require('./config/database.js');
+const cookieParser = require('cookie-parser');
 
 const initHandlebars = require('./config/handlebars.js');
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser())
 initHandlebars(app);
 
 app.use(express.static(path.resolve(__dirname, './public')));
