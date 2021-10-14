@@ -37,17 +37,21 @@ const search = async (text, from, to) => {
 const attachAccessory = async (cubeId, accessoryId) => {
     let cube = await Cube.findById(cubeId);
     let accessory = await Accessory.findById(accessoryId);
+
     cube.accessories.push(accessory);
 
     return cube.save();
-}
+};
+
+const deleteOne = (cubeId) => Cube.findByIdAndDelete(cubeId);
 
 const cubeService = {
     create,
     getAll,
     getOne,
     search,
-    attachAccessory
+    attachAccessory,
+    deleteOne
 };
 
 module.exports = cubeService;
