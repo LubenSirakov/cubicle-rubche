@@ -6,7 +6,7 @@ router.get('/register', (req, res) => {
     res.render('auth/register');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', async (req, res, next) => {
     try {
         let { username, password, repeatPassword } = req.body;
 
@@ -14,7 +14,8 @@ router.post('/register', async (req, res) => {
 
         res.redirect('/login');
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).render('auth/register', {error: error.message})
+        // next(error.message);
     }
 
 });

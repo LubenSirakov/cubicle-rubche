@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 
 const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        validate: [/^[a-zA-z0-9 ]+$/, 'Username should consist of english letters, digits and spaces'],
     },
     description: {
         type: String,
         required: true,
-        maxlength: 100
+        validate: [/^[a-zA-z0-9]+$/, 'Description should consist of english letters, digits and spacess'],
+        maxlength: 100,
+        minlength: 20,
     },
     imageUrl: {
         type: String,

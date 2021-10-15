@@ -1,4 +1,6 @@
 const express = require('express');
+const validator = require('validator');
+const {body, validationResult} = require('express-validator');
 
 const cubeService = require('../services/cubeService.js');
 const cubeAccessoryController = require('./cubeAccessoryController.js');
@@ -12,6 +14,10 @@ const getCreateCubePage = (req, res) => {
 
 const createCube = async (req, res) => {
     let { name, description, imageUrl, difficulty } = req.body;
+
+    // if (!validator.isURL(imageUrl)){
+    //     return res.status(400).send('Invalid image url!')
+    // }
 
     try {
         await cubeService.create(name, description, imageUrl, difficulty);
@@ -55,7 +61,7 @@ const postDeleteCubePage = async (req, res) => {
 };
 
 router.get('/create', isAuth, getCreateCubePage);
-router.post('/create', isAuth, createCube);
+router.post('/create', isAuth, body('imageUrl').isURL(), createCube);
 router.get('/:cubeId', cubeDetails);
 router.get('/:cubeId/edit', isAuth, getEditCubePage);
 router.post('/:cubeId/edit', isAuth, postEditCubePage);
