@@ -10,9 +10,9 @@ const cubeSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
-        validate: [/^[a-zA-z0-9]+$/, 'Description should consist of english letters, digits and spacess'],
+        validate: [/^[a-zA-z0-9 ]+$/, 'Description should consist of english letters, digits and spacess'],
         maxlength: 100,
-        minlength: 20,
+        minlength: 2,
     },
     imageUrl: {
         type: String,
@@ -36,7 +36,11 @@ const cubeSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: 'Accessory', 
         }
-    ]
+    ],
+    creator: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }
 
 })
 
